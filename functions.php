@@ -1,6 +1,8 @@
 <?php
 // Charger les styles du thème
 function nathaliemota_enqueue_styles() {
+    wp_enqueue_style( 'nathaliemota-contact-style', get_stylesheet_directory_uri() . '/assets/css/contact.css', array(), filemtime(get_stylesheet_directory() . '/assets/css/contact.css') ); 
+    wp_enqueue_style( 'nathaliemota-single-photo-style', get_stylesheet_directory_uri() . '/assets/css/single-photo.css', filemtime(get_stylesheet_directory() . '/assets/css/single-photo.css'));
     wp_enqueue_style( 'nathaliemota-style', get_stylesheet_uri() );
 }
 add_action( 'wp_enqueue_scripts', 'nathaliemota_enqueue_styles' );
@@ -25,6 +27,14 @@ function nathaliemota_register_menus() {
 add_action('after_setup_theme', 'nathaliemota_register_menus');
 
 
+// Ajout d'un lien "Contact" personnalisé au menu
+function add_contact_menu_item($items, $args) {
+    if ($args->theme_location == 'primary-menu') { 
+        $items .= '<li id="menu-item-52" class="contact menu-item menu-item-type-custom menu-item-object-custom menu-item-52"><a title="contact_btn_navbar" href="#">Contact</a></li>';
+    }
+    return $items;
+}
+add_filter('wp_nav_menu_items', 'add_contact_menu_item', 10, 2);
 
 
 

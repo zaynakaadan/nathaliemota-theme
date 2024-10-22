@@ -1,8 +1,8 @@
 /*
 Theme Name: Nathalie Mota Theme
 Theme URI: http://motaphoto.com
-Author: Votre Nom
-Author URI: http://votresite.com
+Author: Zayna
+Author URI: http://nathaliemota.local/
 Description: Thème personnalisé pour Nathalie Mota
 Version: 1.0
 Text Domain: nathaliemota
@@ -245,6 +245,92 @@ ul li {
   #footer ul li {
     padding: 0 40px; 
 }
+
+
+
+
+/* BOUTONS */
+.btn_load-more,
+.btn,
+.btn__contact-form-7{       
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    color:#000000;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 8px 20px;
+    transition: all .3s ease-in-out;
+}
+
+.btn,
+.btn__contact-form-7 {
+    background-color:transparent;
+    display: inline-block;
+    font-size: 14px;
+    border-left: 4px solid #000000;
+    border-radius: 0px;
+    overflow: hidden;
+}
+
+.btn {    
+    padding: 8px 40px;
+}
+
+.btn__contact-form-7 {   
+    position: relative;
+    max-width: 214px;
+    width: 90%;
+    height: 38px;    
+    padding: 8px 20px 8px 60px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin: auto;
+}
+
+.btn a,
+.btn__contact-form-7 .wpcf7-submit {
+    position: relative;
+    top: 0;
+    /* display: inline-block; */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+    height: auto;
+    transition: .25s ease-in;
+    transition-delay: .1s;
+}
+
+.btn::before,
+.btn__contact-form-7::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color:#000000;
+    transform: translate(-100%,0%);
+    transition: .36s cubic-bezier(0.4, 0.0, 1, 1);
+}
+
+.btn:hover::before,
+.btn__contact-form-7:hover::before {
+    transform: translate(0%,0%);
+}
+
+.btn:hover a,
+.btn__contact-form-7:hover .wpcf7-submit {
+    color:#ffffff;
+    font-weight: 700;
+}
+
+
+
+
 
 /*  **********************************  */
 /*    Media query : max-width: 768px    */

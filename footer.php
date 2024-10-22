@@ -1,10 +1,25 @@
-<footer>
-        <div class="footer-content">
-            <p>&copy; <?php echo date('Y'); ?> Nathalie Mota. Tous droits réservés.</p>
-        </div>
-    </footer>
-    <?php wp_footer(); ?>
-    <?php get_template_part('templates_part/contact-modal'); ?>
+<?php
+/**
+ * The template for displaying the footer
+ *
+ * @package WordPress
+ * @subpackage nathaliemota
+ */
+?>
+	<footer id="footer">
+		<?php 
+			// Affichage du menu footer déclaré dans functions.php
+			wp_nav_menu(array('theme_location' => 'footer-menu')); 
+		?>		
+		
+	</footer>
+
+	<!-- Lance la popup contact -->
+	<?php 
+        get_template_part ('templates_part/modal/contact-modal'); 		
+    ?>	
+
+<?php wp_footer(); ?>
 
 </body>
 </html>
