@@ -32,7 +32,7 @@
             <?php endif; ?>                  
                     
         <?php endwhile; ?>            
-        <h1 class="title-hero"><?php bloginfo('description'); ?></h1>
+        <h1 class="title-hero">Photographe event</h1>
     </div>  
 </div>
 <?php

@@ -219,6 +219,7 @@
         justify-items: center; 
         text-align: center !important;
         justify-content: center !important;
+        flex-direction: column !important;
     }
 
     .photo__contact p {
