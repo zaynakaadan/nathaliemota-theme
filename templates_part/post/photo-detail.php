@@ -14,7 +14,7 @@
 
 <article class="container__photo flexcolumn">
     <div class="photo__info flexrow">
-        <div class="photo__info--description flexcolumn">
+        <div class="photo__info--description flexcolumn"> <!-- Bloc 1 : Infos photo -->
             <h1><?php the_title(); ?></h1>
             <ul class="flexcolumn">
                 <li class="reference">Référence : 
@@ -34,7 +34,7 @@
                 </li>
             </ul>
         </div>
-        <div class="photo__info--image flexcolumn">
+        <div class="photo__info--image flexcolumn"> <!-- Bloc 2 : Photo -->
             <div class="container--image brightness">
                 <!-- permet d’afficher l’image mise en avant -->
                 <?php the_post_thumbnail('medium_large'); ?>            
