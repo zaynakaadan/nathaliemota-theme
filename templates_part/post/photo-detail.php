@@ -38,7 +38,18 @@
             <div class="container--image brightness">
                 <!-- permet d’afficher l’image mise en avant -->
                 <?php the_post_thumbnail('medium_large'); ?>            
-
-            </div>                     
+                <span class="openLightbox"></span>
+            </div>
+            <form>
+                <input type="hidden" name="postid" class="postid" value="<?php the_id(); ?>">
+                <button class="openLightbox" title="Afficher la photo en plein écran" alt="Afficher la photo en plein écran"
+                    data-postid="<?php echo get_the_id(); ?>"       
+                    data-arrow="false"
+                    data-nonce="<?php echo wp_create_nonce('nathalie_mota_lightbox'); ?>"
+                    data-action="nathalie_mota_lightbox"
+                    data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
+                >
+                </button>
+            </form>                     
     </div>
 </article>
