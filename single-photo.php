@@ -59,6 +59,19 @@ if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 					?>
 					
 				</div>
+			</div>
+		</div>
+		<div class="photo__others flexcolumn">
+			<h2>Vous aimerez aussi</h2>		
+			<div class="photo__others--images flexrow">
+				<?php 
+					get_template_part ( 'templates_part/post/photo-common');
+				 ?>
+			<button class="btn btn-all-photos" type="button">
+				<a href="<?php echo home_url( '/' ); ?>" aria-label="Page d'accueil de Nathalie Mota">Toutes les photos</a>
+			</button>
+			</div>
+		</div>		
     </section>            
 <?php endwhile; endif; ?>
 
