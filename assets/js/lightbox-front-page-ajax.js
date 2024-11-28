@@ -178,9 +178,9 @@ document.addEventListener("DOMContentLoaded", function () {
               const data = res.data;
               const imageHtml = `<img src="${data.thumbnail}" alt="${data.title}" class="lightbox__image">`;
               const titleHtml = `<h4 class="photo-title">${data.title}</h4>`;
-              const categoryHtml = `<p class="photo-category">${data.categories}</p>`;
+              //const categoryHtml = `<p class="photo-category">${data.categories}</p>`;
 
-              $("#lightbox__container_content").html(imageHtml + titleHtml + categoryHtml).removeClass("hidden");
+              $("#lightbox__container_content").html(imageHtml + titleHtml ).removeClass("hidden");
               $(".lightbox__loader").addClass("hidden");
 
               if (arrow && nb_total_posts > 1) {
