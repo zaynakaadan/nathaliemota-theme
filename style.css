@@ -38,7 +38,7 @@ h1 {
 
 a {    
     text-decoration: none;
-    color: #000000;
+    color: white;
 }
 
 ul li {
@@ -327,8 +327,33 @@ ul li {
     color:#ffffff;
     font-weight: 700;
 }
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.btn_load-more {
+    background-color: #D8D8D8;
+    font-size: 12px;
+    border-radius: 4px; /* Un peu plus arrondi pour un look plus agréable */
+    color: #000; /* Couleur du texte pour contraster avec le fond */
+    text-align: center;
+    margin: auto;
+    width: 200px;
 
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    border: none; /* Supprime les bordures par défaut */
+}
+
+.btn_load-more:hover {
+    background-color: #000; /* Changement de couleur au survol */
+    color: #fff; /* Couleur du texte pour contraster avec le fond noir */
+}
+
+.btn_load-more:hover::after {
+    opacity: 1;
+}
 
 
 
@@ -433,7 +458,6 @@ ul li {
 }
 
 
-
 /*  **********************************  */
 /*    Media query : max-width: 768px    */
 /*  **********************************  */
@@ -449,3 +473,538 @@ ul li {
     }
 }
 
+/* FILTRES */
+form {    
+    flex-wrap: nowrap;
+}
+
+.filter-area {
+    width: 80%;
+    min-width: 125px;
+    max-width: 1150px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.filter-area form {
+    justify-content: space-between; 
+    height: 119px;
+    padding: 52px 0;
+    flex-wrap: wrap;
+}    
+    
+.filter-area .filterleft {
+    gap: 20px;
+    width: 560px !important; 
+}
+    
+.filter-area .filterright  {
+    width: 275px !important;
+} 
+    
+.filter-area .filterleft,
+.filter-area .filterright  {
+    justify-content: center;
+} 
+
+.filter-area p,
+.filter-area option {    
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.filter-area p {
+    text-transform: uppercase;
+}
+
+.filter-area option {
+    text-transform: capitalize;
+}
+
+.filter-area select,
+.filter-area #date {
+    height: 40px !important;
+}
+
+.filter-area .select-filter {
+    width: 270px;
+    position: relative;
+    display: inline-block;
+}
+
+.filter-area .option-filter {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #B8BBC2;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 0 24px;
+}
+
+.filter-area .flexcolumn {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+/* On cache la flèche d'origne des sélecteurs car non modifiable */
+.filter-area select { 
+    appearance: none;
+}
+
+/* supprimer la fléche par défaut en IE 10 et 11 */
+.filter-area select::-ms-expand {
+    display: none; 
+}
+
+/* 
+.filter-area #filtre-format:active .dashicons,
+.filter-area #filtre-format:checked .dashicons {
+    transition: all 0.3s ease;
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg); 
+} */
+
+.filter-area .dashicons {  
+    /* width: 9px; */
+    /* height: 7px;   */
+    position: absolute;
+    display: inline-block;
+    top: 13px;
+    right: 15px;
+}
+
+.select-open {
+    transition: all 0.3s ease;
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg); 
+}
+
+.select-close {
+    transition: all 0.3s ease;
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg); 
+}
+
+.container-news {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto 20px;
+    /* gap: 20px; */
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+
+.news-info {
+    position: relative;  
+    transition: all 0.5s ease-in-out;
+}
+
+.container-news .news-info {
+    width: 565px;
+    height: 500px;
+    margin: 0 10px 20px;
+}
+
+.news-info .info-tax,
+.news-info .info-title {
+    position: absolute;
+    bottom: 10px;
+    color: #FFFFFF;
+}
+
+.news-info h2,
+.news-info h3,
+.news-info p {      
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    font-size: 14px !important;
+    font-weight: 400;
+    line-height: 21px;  
+    opacity: 0;  
+    z-index: 5;
+    transition: all 0.5s ease-in-out;
+}
+
+.news-info .info-title {
+    left: 10px;
+}
+
+.news-info .info-tax {
+    right: 10px;
+}
+
+.news-info img {
+    overflow: hidden;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.news-info img,
+.news img,
+.brightness {    
+    transition: all 0.5s ease-in-out;
+}
+
+.brightness::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0; 
+    background-color: #000000;
+    width: 100%;
+    height: 100%; 
+    opacity: 0;  
+    transition: all 0.5s ease-in-out;
+}
+
+.brightness:hover::before {
+    opacity: 0.5;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 100%;
+}
+
+.news-info:hover .detail-photo,
+.news-info:hover .openLightbox,
+.news-info:hover .info-title,
+.news-info:hover .info-tax {
+    opacity: 1;
+}
+
+.detail-photo {
+    position: absolute;
+    cursor: pointer;
+    background: url("./assets/img/eye-svgrepo-com 1.png") center center / 100% 100%;
+    background-repeat: no-repeat;
+    width: 46px;
+    height: 46px;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+
+.openLightbox {
+    position: absolute;
+    cursor: pointer;
+    background: url("./assets/img/fullscreen.png") center center / 100% 100%;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    top: 20px;
+    right: 20px;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+
+/* Media query pour mode mobile */
+@media (max-width: 768px) {
+    .filter-area {
+      width: 100%; /* Occuper toute la largeur disponible */
+     
+
+    }
+  
+    .filterleft {
+        display: flex;
+        flex-direction: column-reverse;
+        margin: 15px 1px;
+    }
+    .filterright{
+        flex-direction: column;
+    }
+
+    .filter-area form {
+      display: block !important; /* Aligner les champs de manière verticale */
+      margin-bottom: 148px;
+      margin-top: -36px;
+    }
+    .filter-area .flexcolumn {
+        display: flex;
+        flex-direction: column;
+        margin: 2px 61px;
+        width: 247px;
+    }
+    .filter-item {
+      width: 100%; /* Assurer que les éléments occupent toute la largeur */
+      margin-bottom: 10px; /* Ajouter un espacement entre les éléments */
+    }
+  
+    .filter-item select {
+      width: 100%; /* Faire en sorte que les champs select occupent toute la largeur */
+      font-size: 14px; /* Réduire la taille de la police pour un meilleur ajustement */
+    }
+  }
+
+/*  **********************************  */
+/*    Media query : max-width: 1200px    */
+/*  **********************************  */
+
+@media screen and (max-width: 1200px) {
+    .hero-area img {    
+        max-height: 866px;
+    }
+    
+    .hero-area .title-hero {
+        font-size: 80px;
+        line-height: 120px;
+    }
+
+    .container-news .news-info {
+        width: 465px;
+        height: 400px;
+    }
+
+    .filter-area {
+        width: 100%;
+        padding: 0 20px;
+    }    
+}
+
+/*  **********************************  */
+/*    Media query : max-width: 1023px    */
+/*  **********************************  */
+
+@media screen and (max-width: 1023px) {
+    #wrap {
+        width: 100%; 
+        flex-direction: column; 
+        padding: 0 20px;
+    }
+
+    #sidebar {
+        padding: 0;
+    }
+
+    #header {
+        height: 70px;
+    }
+
+    .hero-area img {    
+        max-height: 766px;
+    }
+    
+    .hero-area .title-hero {
+        font-size: 60px;
+        line-height: 100px;
+    }
+
+    .container-news .news-info {
+        width: 365px;
+        height: 300px;
+    }    
+
+}
+
+
+/*  **********************************  */
+/*    Media query : max-width: 768px    */
+/*  **********************************  */
+@media all and (max-width: 768px) {
+    .container-header img {
+    width: 138px;
+    }
+
+    #navigation .menu-header-menu-container {
+        opacity: 0;
+    }
+
+    #navigation .menu-header-menu-container a{
+        display: inline-block;
+        transform: translateY(-200px);
+        height: 0;
+    }
+
+    #modal__content .menu-header-menu-container {
+        opacity: 1;
+        height: auto;
+    }
+    
+    #modal__content .menu-header-menu-container a{
+        display: inline-block;
+        transform: translateY(0);
+        height: 0;
+    }
+    
+    #modal__burger {
+        opacity: 1;
+        top: 0;
+    }
+
+    #navigation .menu-header-menu-container,
+    #navigation #modal__burger {
+        margin-right: 0;
+    }
+    
+    .hero-area img {   
+        max-height: 500px;
+    }
+    
+    .hero-area .title-hero {
+        font-size: 40px;
+        line-height: 80px;
+    }
+
+    
+    .filter-left,
+    .filter-right {
+        flex-direction: column; /* Met les éléments en colonne */
+        width: 100%; /* Chaque section occupe toute la largeur */
+    }
+
+    .filter-left .select-filter,
+    .filter-right .select-filter {
+        margin-bottom: 15px; /* Espacement entre les filtres */
+    }
+
+    #footer {
+        border-top: 1px solid #000000;
+        padding: 100px 10px;
+    }
+
+    #footer,
+    .menu-footer-menu-container,
+    .menu-footer-menu-container li {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #footer a,
+    #footer aside {
+        padding: 10px 0;
+    }    
+
+    #pagination {
+    text-align: center; 
+    margin-bottom: 25px;
+    }
+
+    .container-news .news-info {
+        width: 293px;
+        height: 260px;
+    }  
+
+    .news-info h2,
+    .news-info h3,
+    .news-info p {      
+        font-size: 12px !important;
+        line-height: 18px;  
+    }
+
+}
+@media (max-width: 768px) {
+    /* Sur les écrans de taille mobile (moins de 768px) */
+    .filter-left,
+    .filter-right {
+        flex-direction: column; /* Met les éléments en colonne */
+        width: 100%; /* Chaque section occupe toute la largeur */
+    }
+
+    .filter-left .select-filter,
+    .filter-right .select-filter {
+        margin-bottom: 15px; /* Espacement entre les filtres */
+    }
+}
+
+/*  **********************************  */
+/*    Media query : max-width: 580px    */
+/*  **********************************  */
+@media all and (max-width: 580px) {
+    
+
+    .news-info h2,
+    .news-info h3,
+    .news-info p {      
+        font-size: 10px !important;
+        line-height: 14px !important;  
+    }
+
+    .filter-left,
+    .filter-right {
+        flex-direction: column; /* Met les éléments en colonne */
+        width: 100%; /* Chaque section occupe toute la largeur */
+    }
+
+    .filter-left .select-filter,
+    .filter-right .select-filter {
+        margin-bottom: 15px; /* Espacement entre les filtres */
+    }
+}
+
+
+/*  **********************************  */
+/*    Media query : max-width: 320px    */
+/*  **********************************  */
+@media all and (max-width: 320px) {
+    .hero-area img {   
+        max-height: 300px; 
+    }   
+    
+    .news-info h2,
+    .news-info h3,
+    .news-info p {      
+        font-size: 8px !important;
+        line-height: 10px !important;  
+    }
+
+    .hero-area .title-hero {
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    .container-news .news-info {
+        width: 100%;
+        max-height: 260px;
+        height: auto;
+    } 
+
+
+}
+/* Media query pour iPad (portrait et paysage) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .filter-area {
+        width: 100%; /* Occuper toute la largeur disponible */
+    }
+  
+    .filterleft {
+        display: flex;
+        flex-direction: column-reverse;
+        margin: 15px 1px;
+    }
+  
+    .filterright {
+        flex-direction: column;
+    }
+
+    .filter-area form {
+        display: block !important; /* Aligner les champs de manière verticale */
+        margin-bottom: 148px;
+        margin-top: -36px;
+    }
+  
+    .filter-area .flexcolumn {
+        display: flex;
+        flex-direction: column;
+        margin: -2px 243px;
+    }
+  
+    .filter-item {
+        width: 100%; /* Assurer que les éléments occupent toute la largeur */
+        margin-bottom: 10px; /* Ajouter un espacement entre les éléments */
+    }
+  
+    .filter-item select {
+        width: 100%; /* Faire en sorte que les champs select occupent toute la largeur */
+        font-size: 14px; /* Réduire la taille de la police pour un meilleur ajustement */
+    }
+}
