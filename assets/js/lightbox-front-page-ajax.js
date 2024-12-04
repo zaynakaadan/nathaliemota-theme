@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Fonction pour récupérer les données nécessaires
   function recupData() {
-    //console.log("Élément trouvé :", document.getElementById("total_posts"));
+    console.log("Élément trouvé :", document.getElementById("total_posts"));
     const totalPostsElement = document.getElementById("total_posts");
     
     if (totalPostsElement !== null) {
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         totalPosts = parsedTotalPosts; // Mise à jour de totalPosts
                 nb_total_posts = totalPosts.length; // Mise à jour du nombre total de posts
-                //console.log("Liste des IDs des posts :", totalPosts);
+                console.log("Liste des IDs des posts :", totalPosts);
       }
 
     } catch (error) {
@@ -70,6 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     // Si tout est valide, on utilise l'indice directement pour l'ID
     idPhoto = arg; // Pas besoin de `indexOf` si `arg` est déjà l'indice valide
+    //console.log("ID de la photo à afficher après navigation :", idPhoto, "Index réel dans totalPosts :", totalPosts[idPhoto]);
+
     console.log("ID de la photo à afficher :", idPhoto);
   }
 
@@ -87,12 +89,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (Array.isArray(totalPosts) && totalPosts.length > 0) {
           // Forcer la conversion de totalPosts en nombres pour comparer les IDs
           totalPosts = totalPosts.map(id => parseInt(id, 10));          
-          //console.log("totalPosts après conversion :", totalPosts); // Affiche totalPosts après conversion
+          console.log("totalPosts après conversion :", totalPosts); // Affiche totalPosts après conversion
 
         // Détecter un clic sur un élément avec la classe openLightbox  
         if (e.target.className === "openLightbox") {       
           const postID = parseInt($(e.target).data("postid"), 10); // Récupérer l'ID
-          //console.log("ID extrait de data-postid :", postID);// Affiche l'ID extrait
+          console.log("ID extrait de data-postid :", postID);// Affiche l'ID extrait
 
         // S'assurer que l'ID récupéré est bien un nombre valide
         if (isNaN(postID)) {
@@ -110,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Vérifier que idPhoto est dans les limites de le tableau totalsPosrs avant de l'utiliser
           if (indexInTotalPosts === -1) {
             console.error("L'ID de la photo est hors des limites :", postID);
-            //console.log("Liste actuelle des IDs dans totalPosts :", totalPosts);
+            console.log("Liste actuelle des IDs dans totalPosts :", totalPosts);
             return; // Ne pas ouvrir la lightbox si l'ID est invalide
           }
           idPhoto = indexInTotalPosts; // Mettre à jour idPhoto avec l'index

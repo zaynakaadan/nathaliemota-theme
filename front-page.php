@@ -40,7 +40,6 @@ get_header();
         // Arguments de la requête personnalisée
         $custom_args = array(
             'post_type' => 'photo',
-               // 'posts_per_page' => 8,
             'posts_per_page' => 8, // Valeur par défaut
             'order' => $order ?: 'DESC', // Par défaut : 'DESC' 
             'orderby' =>  $orderby, // 'date' , 'meta_value_num', rand
@@ -82,9 +81,9 @@ get_header();
                     <!-- Mise à disposition de JS du tableau contenant toutes les données de la requette et le nombre -->
                     <form> 
                     <?php
-                   // echo '<pre>';
-                    //    print_r($total_posts);
-                    //    echo '</pre>';
+                    //echo '<pre>';
+                       // print_r($total_posts);
+                       // echo '</pre>';
                         
                 // Supposons que $total_posts contient un tableau d'objets WP_Post
                 $post_ids = array_map(function ($post) {
@@ -113,9 +112,15 @@ get_header();
                     <div class="lightbox__container">
                         <div class="lightbox__loader hidden"></div>
                         <div class="lightbox__container_info flexcolumn" id="lightbox__container_info"> 
-                            <div class="lightbox__container_content flexcolumn" id="lightbox__container_content"></div>   
-                            <button class="lightbox__next" aria-label="Voir la photo suivante" title="Photo suivante"></button>
-                            <button class="lightbox__prev" aria-label="Voir la photo précente" title="Photo précédente"></button>                     
+                            <div class="lightbox__container_content flexcolumn" id="lightbox__container_content"></div> 
+                            <div class="lightbox__nav lightbox__next-container">  
+                                <button class="lightbox__next" aria-label="Voir la photo suivante" title="Photo suivante"></button>
+                                <span class="lightbox__textnex">Suivante</span>
+                            </div>
+                            <div class="lightbox__nav lightbox__prev-container">
+                                <button class="lightbox__prev" aria-label="Voir la photo précente" title="Photo précédente"></button>
+                                <span class="lightbox__textprev">Précédente</span>   
+                            </div>                  
                         </div>
                     </div> 
                 </div>

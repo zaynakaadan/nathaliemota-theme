@@ -1,5 +1,5 @@
  /*
-Theme Name: nathalie-mota
+Theme Name: nathaliemota-theme
 Theme URI: https://motaphoto.com
 */
 
@@ -11,7 +11,7 @@ Theme URI: https://motaphoto.com
     width: 100vw;
     height: 100%;
     z-index: 100;
-    background-color: rgba(0, 0, 0, 0.80);
+    background-color: rgba(0, 0, 0, 0.59);
     color: #FFFFFF;
     transition: all .3s ease-in-out;
 }
@@ -25,7 +25,7 @@ Theme URI: https://motaphoto.com
     text-indent: -3000px;
     cursor: pointer;
     opacity:.5;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .lightbox__close:hover,
@@ -38,7 +38,7 @@ Theme URI: https://motaphoto.com
 .lightbox__next {
     width: 25px;
     height: 100%;
-    top: 0;
+    top: 5px;
     margin-top: -4px;
     z-index: 11;
 }
@@ -55,12 +55,12 @@ Theme URI: https://motaphoto.com
 
 .lightbox__prev {
     background: url("../img/prev_white.svg") center center / 100% 100% no-repeat;
-    left: 20px;
+    right: 100px;
 }
 
 .lightbox__next {
     background: url("../img/next_white.svg") center center / 100% 100% no-repeat;
-    right: 20px;
+    right: -57px;
 }
 
 .lightbox .lightbox__container {
@@ -136,6 +136,66 @@ max-width: 100%;
     background: url("../img/loader.svg") center center no-repeat;
 }
 
+/* Conteneur flex */
+.lightbox__nav {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 11;
+}
+
+.lightbox__next-container {
+    top: 50%;
+    right: 8px; 
+    transform: translateY(-50%);
+}
+
+
+.lightbox__prev-container {
+    top: 50%;
+    left: 20px; 
+    transform: translateY(-50%);
+}
+.lightbox__next-container:hover {
+opacity: 1;
+}
+
+.lightbox__textnex{
+    margin-right: -28px;
+    font-size: 16px;
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+    opacity: .5;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 11;
+}
+.lightbox__textprev {  
+    font-size: 16px;
+    color: white;
+    margin-left: -62px;
+    cursor: pointer;
+    opacity: .5;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 11;
+}
+
+.lightbox__nav:hover::after {
+    transform: translateX(5px); /* déplace légèrement la flèche à droite */
+}
+
+.lightbox__prev-container:hover::after {
+    transform: translateX(-5px); /* déplace la flèche à gauche */
+}
+.lightbox__textnex:hover{
+    opacity: 1;
+}
+.lightbox__textprev:hover{
+    opacity: 1;
+}
 
 /*  **********************************  */
 /*    Media query : max-width: 580px    */
@@ -154,11 +214,32 @@ max-width: 100%;
     }
 
     .lightbox__prev {
-        left: 0px;
+        left: -10px;
     }
 
     .lightbox .lightbox__container h2 { 
     font-size: 12px;
     padding-top: 15px;
-}
+    }
+
+    .lightbox__textnex{
+    font-size: 7px;
+    margin-left: -32px;
+    }
+
+    .lightbox__textprev{
+    font-size: 7px;
+    margin-left: -17px;
+    }
+    .lightbox__textprev:hover{
+   opacity: 1;
+    }
+
+    .lightbox__next:hover {
+    opacity: 1;
+    }
+
+    .lightbox__prev:hover{
+    opacity: 1;
+    }
 }

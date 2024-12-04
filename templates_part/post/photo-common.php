@@ -44,6 +44,11 @@
  <!-- Vérifie si le résultat de la requête contient des articles -->
   <?php if($query->have_posts()) : ?>
    <article class="container-common flexrow">
+   <?php
+   //echo '<pre>';
+                        //print_r($total_posts);
+                        //echo '</pre>';
+                        ?>
 <!-- On parcourt chacun des articles résultant de la requête -->
        <?php while($query->have_posts()) :  $query->the_post(); ?>           
             <?php
@@ -95,13 +100,24 @@
 
 <!-- Variables qui vont pourvoir être récupérées par JavaScript -->
 <form>
-   <input type="hidden" name="total_posts" id="total_posts" value="">
+<?php
+// Supposons que 'total_posts' soit un tableau de données que vous souhaitez transmettre au JS
+$total_posts = get_posts(); 
+
+// Vérifier si total_posts n'est pas vide
+if (!empty($total_posts)) {
+    $json_total_posts = json_encode($total_posts);
+} else {
+    $json_total_posts = '[]'; // Envoi d'un tableau vide en cas de problème
+}
+?>
+   <input type="hidden" name="total_posts" id="total_posts" value="<?php echo esc_attr($json_total_posts); ?>">
    <input type="hidden" name="nb_total_posts" id="nb_total_posts" value="">
    <input type="hidden" name="categorie_id" id="categorie_id" value="">
    <input type="hidden" name="format_id" id="format_id" value="">
    <input type="hidden" name="orderby" id="orderby" value="">
    <input type="hidden" name="order" id="order" value="">
-   <input type="hidden" name="max_pages" id="max_pages" value="<?php echo $max_pages; ?>">
+   <input type="hidden" name="max_pages" id="max_pages" value="">
    <input type="hidden" name="ajaxurl" id="ajaxurl" value="<?php echo admin_url( 'admin-ajax.php' ); ?>">
   <!-- c’est un jeton de sécurité, pour s’assurer que la requête provient bien de ce site, et pas d’un autre -->
    <input type="hidden" name="nonce" id="nonce" value="<?php echo wp_create_nonce('nathalie_mota_nonce'); ?>" /> 

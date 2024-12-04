@@ -3,7 +3,7 @@
  * The single : ATRICLE PHOTO 
  *
  * @package WordPress
- * @subpackage nathaliemota theme
+ * @subpackage nathaliemota-theme
  */
 
 	get_header();
@@ -13,7 +13,23 @@
 if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 	<section class="photo_detail">
 		<?php get_template_part ( 'templates_part/post/photo-detail'); ?>
-		
+		<?php
+// Supposons que 'total_posts' soit un tableau de données que vous souhaitez transmettre au JS
+$total_posts = get_posts(); 
+$nb_total_posts = count($total_posts);
+ 
+// Supposons que $total_posts contient un tableau d'objets WP_Post
+$post_ids = array_map(function ($post) {
+	return $post->ID; // Extraire uniquement les IDs
+	}, $total_posts);
+
+	// Convertir le tableau d'IDs en JSON
+	$post_ids_json = json_encode($post_ids);
+?>
+<input type="hidden" id="total_posts" value='<?php echo esc_attr($post_ids_json); ?>'>
+<input type="hidden" name="max_pages" id="max_pages" value="<?php echo esc_attr($max_pages); ?>">
+<input type="hidden" name="nb_total_posts" id="nb_total_posts" value="<?php  echo $nb_total_posts; ?>">
+
         <div class="photo__contact flexrow"> <!-- Bloc 3 : Interactions -->
 			<p>Cette photo vous intéresse ? <a href="#contact-form" class="btn contact">Contact</a></p>
 			<div class="site__navigation flexrow">				
@@ -67,12 +83,25 @@ if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 				<?php 
 					get_template_part ( 'templates_part/post/photo-common');
 				 ?>
-			<button class="btn btn-all-photos" type="button">
-				<a href="<?php echo home_url( '/' ); ?>" aria-label="Page d'accueil de Nathalie Mota">Toutes les photos</a>
-			</button>
 			</div>
 		</div>		
     </section>            
 <?php endwhile; endif; ?>
-
+<div class="lightbox hidden" id="lightbox">    
+                    <button class="lightbox__close" title="Refermer cet agrandissement">Fermer</button>
+                    <div class="lightbox__container">
+                        <div class="lightbox__loader hidden"></div>
+                        <div class="lightbox__container_info flexcolumn" id="lightbox__container_info"> 
+                            <div class="lightbox__container_content flexcolumn" id="lightbox__container_content"></div> 
+                            <div class="lightbox__nav lightbox__next-container">  
+                                <button class="lightbox__next" aria-label="Voir la photo suivante" title="Photo suivante"></button>
+                                
+                            </div>
+                            <div class="lightbox__nav lightbox__prev-container">
+                                <button class="lightbox__prev" aria-label="Voir la photo précente" title="Photo précédente"></button>
+                                   
+                            </div>                  
+                        </div>
+                    </div> 
+                </div>
 <?php get_footer();?>
