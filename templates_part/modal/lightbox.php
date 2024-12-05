@@ -7,18 +7,20 @@
  */
 
  // Récupérer la taxonomie actuelle
- $term = get_queried_object();
- $term_id  = get_acf_custom_field_value('ID', $term);
+$term = get_queried_object();
+$term_id = get_acf_custom_field_value('ID', $term);
 
- $categorie  = get_acf_custom_field_value('name', get_field('categorie'));
+$categorie = get_acf_custom_field_value('name', get_field('categorie'));
 
+$reference = get_field('reference');
 ?>
 <?php the_post_thumbnail('lightbox'); ?>
-<h4 class="photo-title photo-title-<?php the_id(); ?>"><?php the_title(); ?></h4>
-<div class="lightbox__info flexrow">
-     <p class="photo-category-<?php the_id(); ?>"><?php echo $categorie; ?></p>
-    
-</div> 
+
+<!-- Conteneur pour aligner reference et categorie -->
+<div class="reference-category-container">
+    <p class="info-title"><?php echo esc_html($reference); ?></p>
+    <p class="info-tax"><?php the_terms($post->ID, 'categorie', ''); ?></p>
+</div>
 
 
 

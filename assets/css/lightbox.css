@@ -68,7 +68,7 @@ Theme URI: https://motaphoto.com
     display: flex;
     justify-content: center;
     text-align: center;
-    align-items: center;
+    align-items: flex-end;
     width: 100%;
     height: 100%;   
 }
@@ -120,14 +120,28 @@ max-width: 100%;
 }
 
 .lightbox .lightbox__container p {
-    font-size: 10px;
+    font-size: 14px;
 }
 
 .lightbox .lightbox__container .lightbox__info {    
     text-align: left;
     width: 80%;   
 }
+.reference-category-container {
+    display: flex;
+    align-items: center; /* Alignement vertical au centre */
+    justify-content: center;  /* Centre horizontalement */
+    gap: 416px;                 /* Ajustez l'espacement horizontal */
+    margin: 0;                /* Supprime les marges */
+    padding: 0; 
+}
 
+.info-title, .info-tax {
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 0;
+}
+ 
+ 
 /* Gestion d'une image d'attente de chargement */
 .lightbox__loader {
     width: 38px;

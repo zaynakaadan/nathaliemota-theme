@@ -107,27 +107,33 @@ get_header();
                         endwhile; 
                     ?>
                 </article>
-                <div class="lightbox hidden" id="lightbox">    
-                    <button class="lightbox__close" title="Refermer cet agrandissement">Fermer</button>
-                    <div class="lightbox__container">
-                        <div class="lightbox__loader hidden"></div>
-                        <div class="lightbox__container_info flexcolumn" id="lightbox__container_info"> 
-                            <div class="lightbox__container_content flexcolumn" id="lightbox__container_content"></div> 
-                            <div class="lightbox__nav lightbox__next-container">  
-                                <button class="lightbox__next" aria-label="Voir la photo suivante" title="Photo suivante"></button>
-                                <span class="lightbox__textnex">Suivante</span>
-                            </div>
-                            <div class="lightbox__nav lightbox__prev-container">
-                                <button class="lightbox__prev" aria-label="Voir la photo précente" title="Photo précédente"></button>
-                                <span class="lightbox__textprev">Précédente</span>   
-                            </div>                  
-                        </div>
-                    </div> 
+                <div class="lightbox hidden" id="lightbox">
+    <button class="lightbox__close" title="Refermer cet agrandissement">Fermer</button>
+    <div class="lightbox__container">
+        <div class="lightbox__loader hidden"></div>
+        <div class="lightbox__container_info flexcolumn" id="lightbox__container_info"> 
+            <div class="lightbox__container_content flexcolumn" id="lightbox__container_content">
+                <!-- Conteneur Flex pour référence et catégorie -->
+                <div class="reference-category-container">
+                    <p class="info-title"><?php echo esc_html($reference); ?></p>
+                    <p class="info-tax"><?php the_terms($post->ID, 'categorie', ''); ?></p>
                 </div>
-            <?php else : ?>
-                <p>Désolé. Aucun article ne correspond à cette demande.</p>          
-            
-            <?php endif; ?>
+            </div>
+            <div class="lightbox__nav lightbox__next-container">  
+                <button class="lightbox__next" aria-label="Voir la photo suivante" title="Photo suivante"></button>
+                <span class="lightbox__textnex">Suivante</span>
+            </div>
+            <div class="lightbox__nav lightbox__prev-container">
+                <button class="lightbox__prev" aria-label="Voir la photo précédente" title="Photo précédente"></button>
+                <span class="lightbox__textprev">Précédente</span>
+            </div>                  
+        </div>
+    </div> 
+</div>
+<?php else : ?>
+    <p>Désolé. Aucun article ne correspond à cette demande.</p>
+<?php endif; ?>
+>
         
         <?php
         // On réinitialise à la requête principale

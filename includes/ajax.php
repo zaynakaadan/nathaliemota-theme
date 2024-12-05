@@ -119,6 +119,7 @@ if (!isset($_POST['photo_id']) || !is_numeric($_POST['photo_id'])) {
 
 // Récupération des données pour le filtre
 $photo_id = intval($_POST['photo_id']);
+$reference = get_field('reference', $photo_id);
 $photo = get_post($photo_id); // Vérifie si l'identifiant correspond à un post existant
 
 // Si la photo n'existe pas ou n'est pas du bon type
@@ -133,6 +134,7 @@ $data = array(
     'title'       => get_the_title($photo_id),
     'thumbnail'   => get_the_post_thumbnail_url($photo_id, 'large'),
     'categories'  => get_the_term_list($photo_id, 'categorie', '', ', '),
+    'reference' => $reference,
     //'description' => apply_filters('the_content', $photo->post_content),  
 );
 

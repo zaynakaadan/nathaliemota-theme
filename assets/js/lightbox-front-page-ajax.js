@@ -179,10 +179,9 @@ document.addEventListener("DOMContentLoaded", function () {
               console.log("Réponse AJAX réussie : ", res.data);
               const data = res.data;
               const imageHtml = `<img src="${data.thumbnail}" alt="${data.title}" class="lightbox__image">`;
-              const titleHtml = `<h4 class="photo-title">${data.title}</h4>`;
-              //const categoryHtml = `<p class="photo-category">${data.categories}</p>`;
+              const combinedHtml = `<div class="reference-category-container"><p class="photo-title">${data.reference}</p><p class="info-tax">${data.categories}</p></div>`;
 
-              $("#lightbox__container_content").html(imageHtml + titleHtml ).removeClass("hidden");
+              $("#lightbox__container_content").html(imageHtml + combinedHtml).removeClass("hidden");
               $(".lightbox__loader").addClass("hidden");
 
               if (arrow && nb_total_posts > 1) {
